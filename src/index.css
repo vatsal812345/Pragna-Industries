@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #800000; /* Maroon from logo */
+  --secondary: #333333;
+  --accent: #facc15; /* Yellow/Gold as highlight */
+  --text-main: #1a1a1a;
+  --bg-light: #ffffff;
+}
+
+body {
+  @apply text-pragna-dark bg-pragna-white font-sans m-0 p-0;
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-pragna-maroon text-white px-6 py-2 rounded-md hover:bg-opacity-90 transition-all duration-300 font-semibold;
+  }
+  
+  .section-title {
+    @apply text-4xl font-bold text-pragna-gray mb-8 relative;
+  }
+  
+  .section-title::after {
+    content: '';
+    @apply absolute -bottom-2 left-0 w-20 h-1 bg-pragna-maroon;
+  }
+
+  /* Animations requested by user */
+  .fade-in-up {
+    @apply opacity-0 translate-y-10 transition-all duration-700;
+  }
+  
+  .fade-in-up.active {
+    @apply opacity-100 translate-y-0;
+  }
+}
+
+.container {
+  @apply max-w-7xl mx-auto px-4;
+}
