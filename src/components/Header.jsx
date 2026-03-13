@@ -43,9 +43,8 @@ const Header = () => {
             <Link
               key={link.name}
               to={link.path}
-              className={`font-medium transition-colors hover:text-pragna-maroon ${
-                location.pathname === link.path ? 'text-pragna-maroon' : 'text-gray-700'
-              }`}
+              className={`font-medium transition-colors hover:text-pragna-maroon ${location.pathname === link.path ? 'text-pragna-maroon' : 'text-gray-700'
+                }`}
             >
               {link.name}
             </Link>
@@ -58,10 +57,6 @@ const Header = () => {
             <Phone size={16} className="text-pragna-maroon" />
             <span>Call Us</span>
           </a>
-          <button className="flex items-center space-x-1 text-sm font-semibold text-gray-700 border-r pr-3 border-gray-300">
-            <FileText size={16} className="text-pragna-maroon" />
-            <span>Evaluate Cost</span>
-          </button>
           <button className="btn-primary flex items-center space-x-1 py-1.5 px-4 rounded shadow-lg">
             <CheckCircle size={16} />
             <span>Get Job Done</span>
@@ -69,7 +64,7 @@ const Header = () => {
         </div>
 
         {/* Mobile menu button */}
-        <button 
+        <button
           className="lg:hidden p-2 text-gray-700"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >

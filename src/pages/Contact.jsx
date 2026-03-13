@@ -1,17 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Send, Clock, Globe } from 'lucide-react';
 
 const Contact = () => {
+  const [showMap, setShowMap] = useState(false);
   return (
     <div className="bg-white min-h-screen">
       {/* Page Header */}
-      <section className="bg-gray-100 py-20 px-4">
-        <div className="container mx-auto text-center">
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">Contact Us</h1>
-          <p className="text-gray-600 max-w-2xl mx-auto text-lg pt-2 border-t-2 border-pragna-maroon inline-block">
-            Let's discuss your next industrial project. We're here to help.
-          </p>
+      <section className="relative py-24 bg-gray-50 overflow-hidden mb-16 px-4">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-pragna-maroon/5 blur-[120px] rounded-full -mr-64 -mt-64"></div>
+        
+        <div className="container mx-auto px-4 text-center relative z-10">
+          <motion.span 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-pragna-maroon font-bold tracking-[0.2em] uppercase mb-4 block"
+          >
+            Get In Touch
+          </motion.span>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="section-title"
+          >
+            Contact Us
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed mt-4"
+          >
+            Have a project in mind? Let's discuss your industrial requirements and how we can bring your designs to life.
+          </motion.p>
         </div>
       </section>
 
@@ -145,24 +167,73 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Map Section Placeholder */}
-      <section className="h-[500px] w-full bg-gray-200 relative">
-        <div className="absolute inset-0 flex items-center justify-center">
-            <div className="text-center">
-                <MapPin size={48} className="text-pragna-maroon mx-auto mb-4" />
-                <h3 className="text-2xl font-bold text-gray-900">Gorwa Industrial Estate, Vadodara</h3>
-                <p className="text-gray-600 mt-2">Find us at our main fabrication facility.</p>
-                <a 
-                    href="https://maps.google.com/?q=Gorwa+Industrial+Estate+Vadodara" 
-                    target="_blank" 
-                    rel="noreferrer"
-                    className="mt-6 inline-block btn-primary"
-                >
-                    Open in Google Maps
-                </a>
-            </div>
+      {/* Map Section with Click-to-Show */}
+      <section className="py-24 bg-gray-50">
+        <div className="container mx-auto px-4 text-center mb-12">
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">Visit Our Facility</h2>
+          <p className="text-gray-600">F-24/B, Gorwa Industrial Estate, Vadodara</p>
         </div>
-        {/* In a real scenario, you'd embed an actual Google Maps iframe here */}
+        
+        <div className="container mx-auto px-4 max-w-6xl">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="relative h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl border border-gray-200 group"
+          >
+            {!showMap ? (
+              <div 
+                className="absolute inset-0 cursor-pointer"
+                onClick={() => setShowMap(true)}
+              >
+                {/* Simulated Map Preview Image */}
+                <div 
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                  style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80")' }}
+                >
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/30 transition-colors"></div>
+                </div>
+                
+                <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-6">
+                  <div className="w-20 h-20 bg-pragna-maroon text-white rounded-full flex items-center justify-center mb-6 shadow-2xl group-hover:scale-110 transition-transform">
+                    <MapPin size={40} />
+                  </div>
+                  <h3 className="text-3xl font-bold mb-4">Interactive Floor Map</h3>
+                  <p className="text-lg opacity-90 mb-8 max-w-md text-center">
+                    Click anywhere to load the interactive Google Maps view of our facility.
+                  </p>
+                  <button className="px-8 py-3 bg-white text-gray-900 font-bold rounded-lg shadow-xl hover:bg-gray-100 transition-all">
+                    Load Interactive Map
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14763.454273874315!2d73.1517036!3d22.3210086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc8849646c19f%3A0xc6cb5572522ae163!2sGorwa%20Industrial%20Estate%2C%20Gorwa%2C%20Vadodara%2C%20Gujarat%20390016!5e0!3m2!1sen!2sin!4v1710330000000!5m2!1sen!2sin"
+                className="w-full h-full border-0"
+                allowFullScreen="" 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Pragna Industries Location"
+              ></iframe>
+            )}
+            
+            {/* Direct Redirect Button (Always visible) */}
+            <div className="absolute bottom-6 left-6">
+              <a 
+                href="https://maps.google.com/?q=Gorwa+Industrial+Estate+Vadodara" 
+                target="_blank" 
+                rel="noreferrer"
+                className="flex items-center gap-2 px-6 py-3 bg-white text-[#4285F4] font-bold rounded-lg shadow-2xl hover:bg-gray-50 transition-all border border-gray-200"
+              >
+                <div className="w-5 h-5 flex items-center justify-center">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                </div>
+                Open in Google Maps
+              </a>
+            </div>
+          </motion.div>
+        </div>
       </section>
     </div>
   );

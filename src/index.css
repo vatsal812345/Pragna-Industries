@@ -20,12 +20,12 @@ body {
   }
   
   .section-title {
-    @apply text-4xl font-bold text-pragna-gray mb-8 relative;
+    @apply text-4xl lg:text-5xl font-black text-gray-900 mb-8 relative inline-block;
   }
   
   .section-title::after {
     content: '';
-    @apply absolute -bottom-2 left-0 w-20 h-1 bg-pragna-maroon;
+    @apply absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1.5 bg-pragna-maroon rounded-full;
   }
 
   /* Animations requested by user */

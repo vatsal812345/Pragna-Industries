@@ -68,12 +68,21 @@ const Services = () => {
   return (
     <div className="bg-white pb-24">
       {/* Page Header */}
-      <section className="bg-gray-100 py-20 mb-16 px-4">
-        <div className="container mx-auto text-center">
-          <motion.h1 
-            initial={{ opacity: 0, y: -20 }}
+      <section className="relative py-24 bg-gray-50 overflow-hidden mb-16 px-4">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(153,27,27,0.05),transparent)]"></div>
+        
+        <div className="container mx-auto text-center relative z-10">
+          <motion.span 
+            initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6"
+            className="text-pragna-maroon font-bold tracking-[0.2em] uppercase mb-4 block"
+          >
+            Expertise & Innovation
+          </motion.span>
+          <motion.h1 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="section-title"
           >
             Our Fabrication Services
           </motion.h1>
@@ -81,7 +90,7 @@ const Services = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3 }}
-            className="text-gray-600 max-w-2xl mx-auto text-lg"
+            className="text-gray-600 max-w-3xl mx-auto text-lg leading-relaxed mt-4"
           >
             We provide high-precision metal fabrication services for various industrial sectors, specializing in heavy-duty products and custom client designs.
           </motion.p>
@@ -95,42 +104,46 @@ const Services = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12"
         >
           {services.map((service, index) => (
             <motion.div 
               key={index}
               variants={itemVariants}
-              whileHover={{ y: -15, transition: { duration: 0.3 } }}
-              className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 group"
+              whileHover={{ y: -10 }}
+              className="bg-white rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] border border-gray-100 group transition-all duration-500"
             >
-              <div className="h-56 overflow-hidden relative">
+              <div className="h-64 overflow-hidden relative">
                 <img 
                   src={service.image} 
                   alt={service.title} 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" 
                 />
-                <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-20 transition-all duration-300"></div>
-                <div className="absolute bottom-6 left-6 text-pragna-maroon flex bg-white p-3 rounded-lg shadow-lg">
-                  {React.cloneElement(service.icon, { size: 32 })}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute bottom-6 left-6 flex items-center space-x-4">
+                  <div className="bg-pragna-maroon p-4 rounded-2xl shadow-xl text-white">
+                    {React.cloneElement(service.icon, { size: 28 })}
+                  </div>
                 </div>
               </div>
               
-              <div className="p-8">
-                <h3 className="text-2xl font-bold mb-4 text-gray-900 group-hover:text-pragna-maroon transition-colors">
+              <div className="p-10">
+                <h3 className="text-2xl font-black mb-4 text-gray-900 group-hover:text-pragna-maroon transition-colors uppercase tracking-tight">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed min-h-[80px]">
+                <p className="text-gray-600 leading-relaxed min-h-[80px] text-lg">
                   {service.description}
                 </p>
-                <div className="mt-8 flex items-center text-pragna-maroon font-bold group-hover:cursor-pointer">
-                  <span className="mr-2">Explore Details</span>
-                  <motion.div
-                    animate={{ x: [0, 5, 0] }}
-                    transition={{ repeat: Infinity, duration: 1.5 }}
-                  >
-                    →
-                  </motion.div>
+                <div className="mt-8 pt-8 border-t border-gray-50 flex items-center justify-between">
+                  <span className="text-pragna-maroon font-black text-sm tracking-widest uppercase">Consult Now</span>
+                  <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-pragna-maroon group-hover:text-white transition-all duration-300">
+                    <motion.div
+                      animate={{ x: [0, 4, 0] }}
+                      transition={{ repeat: Infinity, duration: 2 }}
+                    >
+                      →
+                    </motion.div>
+                  </div>
                 </div>
               </div>
             </motion.div>

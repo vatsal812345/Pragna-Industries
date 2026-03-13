@@ -4,89 +4,120 @@ import { Phone, Mail, MapPin, Facebook, Linkedin, Twitter } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white pt-16 pb-8">
+    <footer className="bg-[#0b0f19] text-white pt-24 pb-8 border-t border-white/5">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           {/* Company Info */}
-          <div>
-            <div className="flex items-center space-x-2 mb-6 text-white">
-              <div className="w-8 h-8 bg-pragna-maroon flex items-center justify-center text-white font-bold text-lg rounded">
+          <div className="space-y-8">
+            <Link to="/" className="flex items-center space-x-3 group">
+              <div className="w-12 h-12 bg-pragna-maroon flex items-center justify-center text-white font-bold text-xl rounded-xl shadow-lg shadow-pragna-maroon/20 group-hover:scale-105 transition-transform">
                 PI
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-lg leading-none">PRAGNA</span>
-                <span className="text-[10px] tracking-widest text-red-500">INDUSTRIES</span>
+                <span className="font-bold text-xl tracking-tight leading-none text-white">PRAGNA</span>
+                <span className="text-[11px] font-black tracking-[0.2em] text-red-500 uppercase mt-1">Industries</span>
               </div>
-            </div>
-            <p className="text-gray-400 mb-6 leading-relaxed">
-              50+ years of excellence in Industrial and Radiator Fabrication. Manufacturing custom products based on client designs.
+            </Link>
+            <p className="text-gray-400 leading-relaxed text-[15px]">
+              With over 5 decades of industrial legacy, we specialize in high-precision Radiator and Metal Fabrication, setting benchmarks in quality and reliability.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 bg-gray-800 flex items-center justify-center rounded-full hover:bg-pragna-maroon transition-colors">
-                <Facebook size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 bg-gray-800 flex items-center justify-center rounded-full hover:bg-[var(--primary)] transition-colors">
-                <Linkedin size={18} />
-              </a>
-              <a href="#" className="w-10 h-10 bg-gray-800 flex items-center justify-center rounded-full hover:bg-[var(--primary)] transition-colors">
-                <Twitter size={18} />
-              </a>
+              {[
+                { icon: <Facebook size={18} />, href: "#" },
+                { icon: <Linkedin size={18} />, href: "#" },
+                { icon: <Twitter size={18} />, href: "#" }
+              ].map((social, i) => (
+                <a 
+                  key={i} 
+                  href={social.href} 
+                  className="w-11 h-11 bg-white/5 border border-white/10 flex items-center justify-center rounded-xl hover:bg-pragna-maroon hover:border-pragna-maroon hover:-translate-y-1 transition-all duration-300"
+                >
+                  {social.icon}
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-xl font-bold mb-6 relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-0.5 after:bg-pragna-maroon">
-              Quick Links
+            <h3 className="text-lg font-bold mb-8 flex items-center gap-3">
+              <span className="w-8 h-[2px] bg-pragna-maroon"></span>
+              Quick Navigation
             </h3>
             <ul className="space-y-4">
-              <li><Link to="/about" className="text-gray-400 hover:text-white transition-colors">About Company</Link></li>
-              <li><Link to="/services" className="text-gray-400 hover:text-white transition-colors">Our Services</Link></li>
-              <li><Link to="/projects" className="text-gray-400 hover:text-white transition-colors">Latest Projects</Link></li>
-              <li><Link to="/contact" className="text-gray-400 hover:text-white transition-colors">Contact Us</Link></li>
+              {['About', 'Services', 'Projects', 'Contact'].map((item) => (
+                <li key={item}>
+                  <Link 
+                    to={`/${item.toLowerCase()}`} 
+                    className="text-gray-400 hover:text-white hover:translate-x-2 flex items-center gap-2 transition-all duration-300 group"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-pragna-maroon/50 group-hover:bg-pragna-maroon transition-colors"></span>
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Services */}
           <div>
-            <h3 className="text-xl font-bold mb-6 relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-0.5 after:bg-pragna-maroon">
-              Our Services
+            <h3 className="text-lg font-bold mb-8 flex items-center gap-3">
+              <span className="w-8 h-[2px] bg-pragna-maroon"></span>
+              Our Expertise
             </h3>
-            <ul className="space-y-4 text-gray-400">
-              <li>Industrial Fabrication</li>
-              <li>Radiator Fabrication</li>
-              <li>Generator Towers</li>
-              <li>Tanker Fabrication</li>
-              <li>Custom Metal Manufacturing</li>
+            <ul className="space-y-4 text-gray-400 text-[15px]">
+              {[
+                'Industrial Fabrication',
+                'Radiator Fabrication',
+                'Generator Towers',
+                'Tanker Fabrication',
+                'Custom Metal Works'
+              ].map((service) => (
+                <li key={service} className="flex items-center gap-3">
+                  <div className="w-1 h-1 bg-gray-700 rounded-full"></div>
+                  {service}
+                </li>
+              ))}
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-xl font-bold mb-6 relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-0.5 after:bg-pragna-maroon">
+            <h3 className="text-lg font-bold mb-8 flex items-center gap-3">
+              <span className="w-8 h-[2px] bg-pragna-maroon"></span>
               Contact Info
             </h3>
-            <ul className="space-y-4">
-              <li className="flex items-start space-x-3">
-                <MapPin className="text-pragna-maroon mt-1 flex-shrink-0" size={20} />
-                <span className="text-gray-400">
+            <ul className="space-y-6">
+              <li className="flex items-start space-x-4">
+                <div className="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-pragna-maroon flex-shrink-0">
+                  <MapPin size={20} />
+                </div>
+                <span className="text-gray-400 text-[14px] leading-relaxed">
                   F-24/B, Gorwa Industrial Estate, Vadodara - 390016, Gujarat, India
                 </span>
               </li>
-              <li className="flex items-center space-x-3">
-                <Phone className="text-pragna-maroon flex-shrink-0" size={20} />
-                <a href="tel:9824659668" className="text-gray-400 hover:text-white">+91 9824659668</a>
+              <li className="flex items-center space-x-4">
+                <div className="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-pragna-maroon flex-shrink-0">
+                  <Phone size={20} />
+                </div>
+                <a href="tel:9824659668" className="text-gray-400 hover:text-white transition-colors">+91 9824659668</a>
               </li>
-              <li className="flex items-center space-x-3">
-                <Mail className="text-pragna-maroon flex-shrink-0" size={20} />
-                <a href="mailto:pragnaind@yahoo.in" className="text-gray-400 hover:text-white">pragnaind@yahoo.in</a>
+              <li className="flex items-center space-x-4">
+                <div className="w-10 h-10 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center text-pragna-maroon flex-shrink-0">
+                  <Mail size={20} />
+                </div>
+                <a href="mailto:pragnaind@yahoo.in" className="text-gray-400 hover:text-white transition-colors">pragnaind@yahoo.in</a>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
-          <p>© {new Date().getFullYear()} Pragna Industries. All rights reserved. Designed for industrial excellence.</p>
+        <div className="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
+          <p>© {new Date().getFullYear()} Pragna Industries. Precision in every detail.</p>
+          <div className="flex gap-8">
+            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+          </div>
         </div>
       </div>
     </footer>

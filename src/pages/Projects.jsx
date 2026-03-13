@@ -16,17 +16,39 @@ const Projects = () => {
     { title: 'Power Plant Component', category: 'Generator', image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=400' },
   ];
 
-  const filteredProjects = filter === 'All' 
-    ? projects 
+  const filteredProjects = filter === 'All'
+    ? projects
     : projects.filter(p => p.category === filter);
 
   return (
     <div className="bg-white min-h-screen">
       {/* Page Header */}
-      <section className="bg-gray-100 py-16 px-4">
-        <div className="container mx-auto text-center">
-          <h1 className="text-4xl font-bold text-gray-900 mb-4">Our Projects</h1>
-          <p className="text-gray-600 max-w-xl mx-auto">Showcasing our commitment to quality and precision across various fabrication domains.</p>
+      <section className="relative py-24 bg-gray-50 overflow-hidden px-4">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(153,27,27,0.05),transparent)]"></div>
+
+        <div className="container mx-auto text-center relative z-10">
+          <motion.span
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-pragna-maroon font-bold tracking-[0.2em] uppercase mb-4 block"
+          >
+            Portfolio
+          </motion.span>
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="section-title"
+          >
+            Our Projects
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="text-gray-600 max-w-2xl mx-auto text-lg leading-relaxed mt-4"
+          >
+            Showcasing our commitment to quality and precision across various fabrication domains through our diverse project portfolio.
+          </motion.p>
         </div>
       </section>
 
@@ -39,11 +61,10 @@ const Projects = () => {
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
-                className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
-                  filter === cat 
-                  ? 'bg-pragna-maroon text-white shadow-lg' 
-                  : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
-                }`}
+                className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${filter === cat
+                    ? 'bg-pragna-maroon text-white shadow-lg'
+                    : 'bg-gray-200 text-gray-600 hover:bg-gray-300'
+                  }`}
               >
                 {cat}
               </button>
@@ -55,7 +76,7 @@ const Projects = () => {
       {/* Projects Grid */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <motion.div 
+          <motion.div
             layout
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
@@ -70,12 +91,12 @@ const Projects = () => {
                   transition={{ duration: 0.4 }}
                   className="group relative rounded-xl overflow-hidden shadow-xl"
                 >
-                  <img 
-                    src={project.image} 
-                    alt={project.title} 
-                    className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110" 
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-110"
                   />
-                  
+
                   {/* Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
                     <span className="text-pragna-maroon font-bold text-sm tracking-widest uppercase mb-2">
