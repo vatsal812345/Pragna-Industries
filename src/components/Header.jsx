@@ -28,10 +28,10 @@ const Header = () => {
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">
-          <img src="/IMG_logo.png" alt="Pragna Industries Logo" className="h-12 md:h-14 object-contain" />
-          <div className="flex flex-col">
-            <span className={`font-bold text-xl leading-none ${isScrolled ? 'text-gray-900' : 'text-gray-900'}`}>PRAGNA</span>
-            <span className={`text-xs tracking-widest text-pragna-maroon`}>INDUSTRIES</span>
+          <img src="/IMG_logo.png" alt="Pragna Industries Logo" className="h-10 md:h-12 object-contain" />
+          <div className="flex flex-col justify-center">
+            <span className={`font-bold text-2xl md:text-3xl leading-none tracking-tight ${isScrolled ? 'text-gray-900' : 'text-gray-900'}`}>PRAGNA</span>
+            <span className={`text-[0.65rem] md:text-[0.85rem] tracking-[0.34em] font-bold text-pragna-maroon mt-1 ml-[2px] md:ml-[3px]`}>INDUSTRIES</span>
           </div>
         </Link>
 

@@ -9,11 +9,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
           {/* Company Info */}
           <div className="space-y-8">
-            <Link to="/" className="flex items-center space-x-3 group">
-              <img src="/IMG_logo.png" alt="Pragna Industries Logo" className="h-14 md:h-16 object-contain bg-white p-2 rounded-xl group-hover:scale-105 transition-transform" />
-              <div className="flex flex-col">
-                <span className="font-bold text-xl tracking-tight leading-none text-white">PRAGNA</span>
-                <span className="text-[11px] font-black tracking-[0.2em] text-red-500 uppercase mt-1">Industries</span>
+            <Link to="/" className="flex items-center space-x-2 group">
+              <img src="/IMG_logo.png" alt="Pragna Industries Logo" className="h-12 md:h-14 object-contain group-hover:scale-105 transition-transform" />
+              <div className="flex flex-col justify-center">
+                <span className="font-bold text-2xl md:text-3xl tracking-tight leading-none text-white">PRAGNA</span>
+                <span className="text-[0.65rem] md:text-[0.85rem] font-bold tracking-[0.34em] text-red-500 uppercase mt-1 ml-[2px] md:ml-[3px]">INDUSTRIES</span>
               </div>
             </Link>
             <p className="text-gray-400 leading-relaxed text-[15px]">
