@@ -70,7 +70,7 @@ const Contact = () => {
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-6"
           >
-            Contact <span className="text-pragna-maroon relative inline-block">Us
+            Contact <span className="text-pragna-gray-900 relative inline-block">Us
               <span className="absolute bottom-2 left-0 w-full h-3 bg-red-100 -z-10 rounded-full opacity-60"></span>
             </span>
           </motion.h1>

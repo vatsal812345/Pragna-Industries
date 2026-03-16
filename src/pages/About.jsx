@@ -4,8 +4,8 @@ import { History, Award, Users, TrendingUp } from 'lucide-react';
 
 const About = () => {
   const leadership = [
-    { name: 'Deepak Prajapati', role: 'Managing Director', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
-    { name: 'Vatsal Prajapati', role: 'Director', image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80' },
+    { name: 'Deepak Prajapati', role: 'Managing Director', image: 'd.jpg' },
+    { name: 'Vatsal Prajapati', role: 'Director', image: 'v.PNG' },
   ];
 
   return (
@@ -52,23 +52,24 @@ const About = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8 }}
-              >
-                <div className="flex items-center space-x-2 text-pragna-maroon font-bold uppercase tracking-wider mb-4">
+              > <div className="flex items-center space-x-2 text-pragna-maroon font-bold uppercase tracking-wider mb-4">
                   <History size={20} />
                   <span>Our History</span>
                 </div>
-                <h2 className="text-4xl font-bold text-gray-900 mb-6">Five Decades of Manufacturing Innovation</h2>
+                <h2 className="text-4xl font-bold text-gray-900 mb-6">Leading Experts in Fabrication & Manufacturing</h2>
                 <div className="space-y-6 text-gray-600 leading-relaxed text-lg">
                   <p>
-                    Founded over 50 years ago, Pragna Industries started as a small fabrication unit with a vision to provide specialized metal products to local industries. Today, we have grown into a leading name in Industrial and Radiator Fabrication.
+                Pragna Industries is an experienced industrial fabrication company with <b> more than 50+ years of expertise </b> in manufacturing and metal fabrication. We specialize in producing <b> over 50 different types of radiator designs</b>, including custom radiators based on client requirements.
                   </p>
                   <p>
-                    Our journey has been defined by a commitment to quality, precision, and customer satisfaction. We specialize in manufacturing custom products based on client designs, ensuring every piece meets rigorous industrial standards.
+                   We also manufacture <b> generator towers based on provided designs</b> , along with <b> boiler tanks, welding work, and structural fabrication</b> for various industrial applications. Our team focuses on <b> quality manufacturing, precision work, and reliable industrial solutions </b> to meet customer needs.
                   </p>
                   <p>
-                    From generator towers to fuel tankers, we have manufactured thousands of products that power and support industries across the region.
+                   Under the leadership of <b> Managing Director Deepak Prajapati</b>, Pragna Industries continues to deliver trusted fabrication services with professional workmanship.
                   </p>
                 </div>
+
+
               </motion.div>
             </div>
             <div className="lg:w-1/2 grid grid-cols-2 gap-6">
@@ -110,9 +111,9 @@ const About = () => {
                 className="max-w-sm group"
               >
                 <div className="mb-8 relative inline-block">
-                  <div className="absolute inset-0 bg-pragna-maroon/20 rounded-[2rem] translate-x-4 translate-y-4 -z-10 group-hover:translate-x-6 group-hover:translate-y-6 transition-all duration-500 blur-sm"></div>
+                  <div className="absolute inset-0 bg-pragna-maroon/20 rounded-[2rem] translate-x-4 translate-y-4 -z-10 blur-sm"></div>
                   <div className="overflow-hidden rounded-[2rem] shadow-2xl">
-                    <img src={leader.image} alt={leader.name} className="w-72 h-96 object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+                    <img src={leader.image} alt={leader.name} className="w-72 h-96 object-cover" />
                   </div>
                 </div>
                 <div className="text-center">
