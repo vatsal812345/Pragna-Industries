@@ -21,19 +21,20 @@ const transporter = nodemailer.createTransport({
 });
 
 app.post('/api/contact', async (req, res) => {
-  const { firstName, lastName, email, phone, message } = req.body;
+  const { firstName, lastName, companyName, email, phone, message } = req.body;
 
   try {
     const mailOptions = {
       from: email, // sender address (the person filling the form)
       replyTo: email, // This makes it so hitting "Reply" goes to the person who filled the form
-      to: 'vatsalprajapati804@gmail.com', // list of receivers
-      cc: 'shahheetdilipkumar@gmail.com', // cc address
+      to: 'pragnaind@yahoo.in', // list of receivers
+      cc: 'vatsalprajapati804@gmail.com', // cc address
       subject: `New Contact Form Submission from ${firstName} ${lastName}`, // Subject line
       text: `
         You have a new contact form submission:
         
         Name: ${firstName} ${lastName}
+        Company Name: ${companyName || 'Not provided'}
         Email: ${email}
         Phone: ${phone || 'Not provided'}
         Message: ${message}
@@ -44,213 +45,314 @@ app.post('/api/contact', async (req, res) => {
         <head>
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>New Contact Form Submission</title>
+          <title>New Contact Inquiry - Pragna Industries</title>
           <style>
-            @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+            
+            body, table, td, p, a, h1, h2, h3, h4, h5, h6 {
+              font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            }
             
             body {
-              font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-              line-height: 1.6;
-              color: #334155;
-              background-color: #f8fafc;
               margin: 0;
               padding: 0;
+              width: 100% !important;
+              -webkit-text-size-adjust: 100%;
+              -ms-text-size-adjust: 100%;
+              background-color: #f3f4f6;
+              color: #1f2937;
             }
             
-            .container {
+            .wrapper {
+              width: 100%;
+              table-layout: fixed;
+              background-color: #f3f4f6;
+              padding-bottom: 60px;
+            }
+            
+            .main-container {
+              background-color: #ffffff;
               max-width: 600px;
               margin: 40px auto;
-              background-color: #ffffff;
-              border-radius: 12px;
+              border-radius: 20px;
               overflow: hidden;
-              box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+              box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             }
             
-            .header {
-              background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 100%);
-              padding: 32px 40px;
-              text-align: center;
-              border-bottom: 4px solid #f87171;
-            }
-            
-            .header h1 {
+            .header-banner {
+              background: linear-gradient(145deg, #111827 0%, #1f2937 100%);
               color: #ffffff;
-              margin: 0;
-              font-size: 24px;
-              font-weight: 700;
-              letter-spacing: 2px;
-              text-transform: uppercase;
+              padding: 50px 40px;
+              text-align: center;
+              position: relative;
             }
             
-            .header p {
-              color: #fecaca;
-              margin: 8px 0 0 0;
+            .header-banner::after {
+              content: '';
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              height: 4px;
+              background: linear-gradient(90deg, #dc2626 0%, #ef4444 50%, #fca5a5 100%);
+            }
+            
+            .logo-text {
+              font-size: 28px;
+              font-weight: 700;
+              letter-spacing: 3px;
+              text-transform: uppercase;
+              margin: 0 0 10px 0;
+              background: linear-gradient(90deg, #ffffff, #fca5a5);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+            }
+            
+            .subtitle {
+              color: #9ca3af;
               font-size: 14px;
               font-weight: 500;
+              letter-spacing: 1.5px;
+              text-transform: uppercase;
+              margin: 0;
+            }
+            
+            .content-wrapper {
+              padding: 50px 40px;
+            }
+            
+            .greeting {
+              font-size: 20px;
+              font-weight: 600;
+              color: #111827;
+              margin-top: 0;
+              margin-bottom: 25px;
+            }
+            
+            .info-grid {
+              display: grid;
+              grid-template-columns: repeat(2, 1fr);
+              gap: 20px;
+              margin-bottom: 35px;
+            }
+            
+            .info-box {
+              background-color: #f8fafc;
+              border: 1px solid #f1f5f9;
+              border-radius: 12px;
+              padding: 20px;
+              transition: transform 0.2s ease;
+            }
+            
+            .info-box:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            }
+            
+            .box-icon {
+              font-size: 20px;
+              margin-bottom: 10px;
+              color: #dc2626;
+            }
+            
+            .info-label {
+              font-size: 11px;
+              font-weight: 700;
+              color: #64748b;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              margin-bottom: 5px;
+            }
+            
+            .info-value {
+              font-size: 15px;
+              font-weight: 600;
+              color: #0f172a;
+              margin: 0;
+              word-break: break-word;
+            }
+            
+            .info-value a {
+              color: #dc2626;
+              text-decoration: none;
+              transition: color 0.2s;
+            }
+            
+            .info-value a:hover {
+              color: #991b1b;
+              text-decoration: underline;
+            }
+            
+            .message-container {
+              background-color: #ffffff;
+              border: 1px solid #e2e8f0;
+              border-radius: 16px;
+              overflow: hidden;
+              margin-top: 20px;
+            }
+            
+            .message-header {
+              background-color: #f8fafc;
+              padding: 16px 24px;
+              border-bottom: 1px solid #e2e8f0;
+              display: flex;
+              align-items: center;
+              font-size: 13px;
+              font-weight: 700;
+              color: #475569;
               text-transform: uppercase;
               letter-spacing: 1px;
             }
             
-            .content {
-              padding: 40px;
-            }
-            
-            .info-card {
-              background-color: #f8fafc;
-              border: 1px solid #e2e8f0;
-              border-radius: 8px;
-              padding: 24px;
-              margin-bottom: 32px;
-            }
-            
-            .info-row {
-              display: flex;
-              margin-bottom: 16px;
-              padding-bottom: 16px;
-              border-bottom: 1px solid #e2e8f0;
-            }
-            
-            .info-row:last-child {
-              margin-bottom: 0;
-              padding-bottom: 0;
-              border-bottom: none;
-            }
-            
-            .label {
-              flex: 0 0 100px;
-              font-size: 12px;
-              font-weight: 600;
-              color: #64748b;
-              text-transform: uppercase;
-              letter-spacing: 0.5px;
-            }
-            
-            .value {
-              flex: 1;
-              color: #0f172a;
-              font-weight: 500;
-              font-size: 15px;
-            }
-            
-            .value a {
-              color: #7f1d1d;
-              text-decoration: none;
-              font-weight: 600;
-            }
-            
-            .message-section {
-              background-color: #ffffff;
-            }
-            
-            .message-header {
-              font-size: 14px;
-              font-weight: 600;
-              color: #64748b;
-              text-transform: uppercase;
-              letter-spacing: 0.5px;
-              margin-bottom: 12px;
-              display: flex;
-              align-items: center;
-            }
-            
             .message-header::before {
-              content: '';
-              display: inline-block;
-              width: 8px;
-              height: 8px;
-              background-color: #7f1d1d;
-              border-radius: 50%;
-              margin-right: 8px;
+              content: '\\2709';
+              font-size: 18px;
+              margin-right: 10px;
+              color: #94a3b8;
             }
             
             .message-body {
-              background-color: #fef2f2;
-              border-left: 4px solid #7f1d1d;
-              padding: 24px;
-              border-radius: 0 8px 8px 0;
+              padding: 30px;
               color: #334155;
-              font-size: 15px;
+              font-size: 16px;
               line-height: 1.8;
+              font-weight: 400;
               white-space: pre-wrap;
-              word-wrap: break-word;
             }
             
             .footer {
-              padding: 32px 40px;
-              background-color: #f8fafc;
-              border-top: 1px solid #e2e8f0;
               text-align: center;
-            }
-            
-            .footer p {
-              margin: 0 0 8px 0;
+              padding: 40px 20px;
               color: #64748b;
               font-size: 13px;
+              background-color: #f8fafc;
+              border-top: 1px solid #f1f5f9;
             }
             
-            .footer p:last-child {
-              margin-bottom: 0;
-              color: #94a3b8;
-              font-size: 12px;
+            .footer-logo {
+              font-size: 18px;
+              font-weight: 700;
+              color: #cbd5e1;
+              letter-spacing: 2px;
+              margin-bottom: 15px;
+              text-transform: uppercase;
             }
             
-            @media only screen and (max-width: 600px) {
-              .container {
-                margin: 0;
-                border-radius: 0;
+            .action-btn {
+              display: inline-block;
+              background-color: #111827;
+              color: #ffffff !important;
+              text-decoration: none;
+              padding: 12px 28px;
+              border-radius: 8px;
+              font-weight: 600;
+              font-size: 14px;
+              margin-top: 25px;
+              transition: background-color 0.2s;
+            }
+            
+            .action-btn:hover {
+              background-color: #374151;
+            }
+            
+            @media screen and (max-width: 600px) {
+              .main-container {
+                margin: 20px 10px !important;
+                border-radius: 12px;
+                width: auto !important;
               }
-              .content, .header, .footer {
-                padding: 24px;
+              .header-banner {
+                padding: 40px 20px !important;
               }
-              .info-row {
-                flex-direction: column;
+              .content-wrapper {
+                padding: 30px 20px !important;
               }
-              .label {
-                margin-bottom: 4px;
+              .info-grid {
+                grid-template-columns: 1fr !important;
               }
             }
           </style>
         </head>
         <body>
-          <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #f8fafc;">
-            <tr>
-              <td align="center" style="padding: 40px 10px;">
-                <div class="container">
-                  <div class="header">
-                    <h1>Pragna Industries</h1>
-                    <p>New Contact Inquiry</p>
-                  </div>
-                  
-                  <div class="content">
-                    <div class="info-card">
-                      <div class="info-row">
-                        <div class="label">Name</div>
-                        <div class="value">${firstName} ${lastName}</div>
-                      </div>
-                      <div class="info-row">
-                        <div class="label">Email</div>
-                        <div class="value"><a href="mailto:${email}">${email}</a></div>
-                      </div>
-                      <div class="info-row">
-                        <div class="label">Phone</div>
-                        <div class="value">${phone || '<span style="color: #94a3b8; font-style: italic;">Not provided</span>'}</div>
-                      </div>
+          <div class="wrapper">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td align="center">
+                  <div class="main-container">
+                    
+                    <!-- Header -->
+                    <div class="header-banner">
+                      <h1 class="logo-text">Pragna</h1>
+                      <p class="subtitle">New Project Inquiry</p>
                     </div>
                     
-                    <div class="message-section">
-                      <div class="message-header">Message Details</div>
-                      <div class="message-body">${message.replace(/\n/g, '<br>')}</div>
+                    <!-- Content -->
+                    <div class="content-wrapper">
+                      <!-- Greeting -->
+                      <h2 class="greeting">Hello Team,</h2>
+                      <p style="color: #64748b; font-size: 15px; margin-bottom: 30px; line-height: 1.6;">
+                        You have received a new contact submission from your website. Here are the details:
+                      </p>
+                      
+                      <!-- Details Grid -->
+                      <div class="info-grid">
+                        
+                        <!-- Client Name -->
+                        <div class="info-box">
+                          <div class="box-icon">👤</div>
+                          <div class="info-label">Client Name</div>
+                          <p class="info-value">${firstName} ${lastName}</p>
+                        </div>
+                        
+                        <!-- Company -->
+                        <div class="info-box">
+                          <div class="box-icon">🏢</div>
+                          <div class="info-label">Company</div>
+                          <p class="info-value">${companyName || '<span style="color: #94a3b8; font-style: italic; font-weight: 400;">Not specified</span>'}</p>
+                        </div>
+                        
+                        <!-- Email Address -->
+                        <div class="info-box" style="grid-column: 1 / -1;">
+                          <div class="box-icon">✉️</div>
+                          <div class="info-label">Email Address</div>
+                          <p class="info-value"><a href="mailto:${email}">${email}</a></p>
+                        </div>
+                        
+                        <!-- Phone Number -->
+                        <div class="info-box" style="grid-column: 1 / -1;">
+                          <div class="box-icon">📞</div>
+                          <div class="info-label">Phone Number</div>
+                          <p class="info-value">
+                            ${phone ? `<a href="tel:${phone.replace(/\D/g, '')}" style="color: #0f172a; text-decoration: none;">${phone}</a>` : '<span style="color: #94a3b8; font-style: italic; font-weight: 400;">Not provided</span>'}
+                          </p>
+                        </div>
+                        
+                      </div>
+                      
+                      <!-- Message Area -->
+                      <div class="message-container">
+                        <div class="message-header">Client Message</div>
+                        <div class="message-body">${message.replace(/\n/g, '<br>')}</div>
+                      </div>
+                      
+                      <div style="text-align: center;">
+                        <a href="mailto:${email}" class="action-btn">Reply to ${firstName}</a>
+                      </div>
+                      
                     </div>
+                    
+                    <!-- Footer -->
+                    <div class="footer">
+                      <div class="footer-logo">Pragna Industries</div>
+                      <p style="margin: 0; margin-bottom: 5px;">This email was automatically generated from your website contact form.</p>
+                      <p style="margin: 0; color: #94a3b8;">Please do not mark as spam.</p>
+                    </div>
+                    
                   </div>
-                  
-                  <div class="footer">
-                    <p>This email was securely generated from your website's contact form.</p>
-                    <p>Reply directly to this email to respond to ${firstName}.</p>
-                  </div>
-                </div>
-              </td>
-            </tr>
-          </table>
+                </td>
+              </tr>
+            </table>
+          </div>
         </body>
         </html>
       `, // html body

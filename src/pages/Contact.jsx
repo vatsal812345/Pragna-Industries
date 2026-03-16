@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Send, Clock, Globe } from 'lucide-react';
@@ -7,6 +8,7 @@ const Contact = () => {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
+    companyName: '',
     email: '',
     phone: '',
     message: ''
@@ -37,7 +39,7 @@ const Contact = () => {
 
       if (response.ok) {
         setStatus({ type: 'success', message: 'Message sent successfully!' });
-        setFormData({ firstName: '', lastName: '', email: '', phone: '', message: '' });
+        setFormData({ firstName: '', lastName: '', companyName: '', email: '', phone: '', message: '' });
       } else {
         setStatus({ type: 'error', message: data.error || 'Failed to send message.' });
       }
@@ -51,7 +53,7 @@ const Contact = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* Page Header */}
-      <section className="relative pt-16 pb-12 lg:pt-20 lg:pb-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden mb-12 border-b border-gray-100">
+      <section className="relative pt-12 pb-8 sm:pt-16 sm:pb-12 lg:pt-20 lg:pb-16 bg-gradient-to-b from-gray-50 to-white overflow-hidden mb-8 sm:mb-12 border-b border-gray-100">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-pragna-maroon/5 blur-[120px] rounded-full pointer-events-none -mr-64 -mt-64"></div>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-pragna-maroon/5 blur-[120px] rounded-full pointer-events-none -ml-64 -mb-64"></div>
         
@@ -68,7 +70,7 @@ const Contact = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-6"
+            className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 tracking-tight mb-4 sm:mb-6"
           >
             Contact <span className="text-pragna-gray-900 relative inline-block">Us
               <span className="absolute bottom-2 left-0 w-full h-3 bg-red-100 -z-10 rounded-full opacity-60"></span>
@@ -79,16 +81,16 @@ const Contact = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="text-gray-600 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto"
+            className="text-gray-600 text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl mx-auto"
           >
             Have a project in mind? Let's discuss your industrial requirements and how we can bring your designs to life.
           </motion.p>
         </div>
       </section>
 
-      <section className="py-24">
+      <section className="py-14 sm:py-20 lg:py-24">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row gap-16">
+          <div className="flex flex-col lg:flex-row gap-10 sm:gap-12 lg:gap-16">
             {/* Contact Information */}
             <div className="lg:w-1/3">
               <motion.div 
@@ -157,9 +159,9 @@ const Contact = () => {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-white p-10 rounded-2xl shadow-2xl border border-gray-100"
+                className="bg-white p-6 sm:p-8 lg:p-10 rounded-2xl shadow-2xl border border-gray-100"
               >
-                <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 lg:gap-8">
                   <div className="space-y-2">
                     <label className="text-sm font-bold text-gray-700 uppercase tracking-wider">First Name</label>
                     <input 
@@ -169,7 +171,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       placeholder="e.g. Deepak"
-                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all" 
+                      className="w-full px-4 py-3 sm:px-5 sm:py-4 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all text-sm sm:text-base" 
                     />
                   </div>
                   <div className="space-y-2">
@@ -181,7 +183,18 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       placeholder="e.g. Prajapati"
-                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all" 
+                      className="w-full px-4 py-3 sm:px-5 sm:py-4 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all text-sm sm:text-base" 
+                    />
+                  </div>
+                  <div className="space-y-2 md:col-span-2">
+                    <label className="text-sm font-bold text-gray-700 uppercase tracking-wider">Company Name</label>
+                    <input 
+                      type="text" 
+                      name="companyName"
+                      value={formData.companyName}
+                      onChange={handleChange}
+                      placeholder="e.g. Acme Corporation"
+                      className="w-full px-4 py-3 sm:px-5 sm:py-4 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all text-sm sm:text-base" 
                     />
                   </div>
                   <div className="space-y-2 md:col-span-2">
@@ -193,7 +206,7 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       placeholder="your@email.com"
-                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all" 
+                      className="w-full px-4 py-3 sm:px-5 sm:py-4 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all text-sm sm:text-base" 
                     />
                   </div>
                   <div className="space-y-2 md:col-span-2">
@@ -204,7 +217,7 @@ const Contact = () => {
                       value={formData.phone}
                       onChange={handleChange}
                       placeholder="+91 XXXXX XXXXX"
-                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all" 
+                      className="w-full px-4 py-3 sm:px-5 sm:py-4 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all text-sm sm:text-base" 
                     />
                   </div>
                   <div className="space-y-2 md:col-span-2">
@@ -216,7 +229,7 @@ const Contact = () => {
                       required
                       rows="6" 
                       placeholder="Tell us about your project requirements..."
-                      className="w-full px-5 py-4 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all resize-none"
+                      className="w-full px-4 py-3 sm:px-5 sm:py-4 bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--primary)] focus:border-transparent transition-all resize-none text-sm sm:text-base"
                     ></textarea>
                   </div>
                   
@@ -230,7 +243,7 @@ const Contact = () => {
                     <button 
                       type="submit" 
                       disabled={isSubmitting}
-                      className={`w-full py-5 rounded-lg flex items-center justify-center space-x-3 text-lg ${isSubmitting ? 'bg-gray-400 cursor-not-allowed text-white' : 'btn-primary'}`}
+                      className={`w-full py-4 sm:py-5 rounded-lg flex items-center justify-center space-x-3 text-base sm:text-lg ${isSubmitting ? 'bg-gray-400 cursor-not-allowed text-white' : 'btn-primary'}`}
                     >
                       {isSubmitting ? (
                         <span>Sending...</span>
@@ -250,9 +263,9 @@ const Contact = () => {
       </section>
 
       {/* Map Section with Click-to-Show */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-14 sm:py-20 lg:py-24 bg-gray-50">
         <div className="container mx-auto px-4 text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Visit Our Facility</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Visit Our Facility</h2>
           <p className="text-gray-600">F-24/B, Gorwa Industrial Estate, Vadodara</p>
         </div>
         
@@ -261,7 +274,7 @@ const Contact = () => {
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="relative h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl border border-gray-200 group"
+            className="relative h-[350px] sm:h-[450px] lg:h-[600px] w-full rounded-2xl overflow-hidden shadow-2xl border border-gray-200 group"
           >
             <iframe 
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14763.454273874315!2d73.1517036!3d22.3210086!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395fc8849646c19f%3A0xc6cb5572522ae163!2sGorwa%20Industrial%20Estate%2C%20Gorwa%2C%20Vadodara%2C%20Gujarat%20390016!5e0!3m2!1sen!2sin!4v1710330000000!5m2!1sen!2sin"

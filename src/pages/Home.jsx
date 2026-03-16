@@ -32,7 +32,7 @@ const Home = () => {
   return (
     <div className="overflow-hidden">
       {/* Hero Section */}
-      <section className="relative h-[80vh] flex items-center text-white">
+      <section className="relative min-h-[60vh] sm:min-h-[70vh] lg:h-[80vh] flex items-center text-white pt-20 sm:pt-0">
         <div
           className="absolute inset-0 bg-cover bg-center z-0"
           style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80")' }}
@@ -47,18 +47,18 @@ const Home = () => {
             transition={{ duration: 0.8 }}
             className="max-w-3xl"
           >
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 leading-tight">
               Excellence in <span className="text-pragna-maroon">Industrial</span> Fabrication
             </h1>
-            <p className="text-xl mb-8 text-gray-200 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl mb-6 sm:mb-8 text-gray-200 leading-relaxed">
               Pragna Industries delivers high-quality custom metal products and radiator fabrication solutions with over 50 years of industry expertise.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link to="/services" className="btn-primary flex items-center space-x-2 text-lg px-8 py-3">
+              <Link to="/services" className="btn-primary flex items-center space-x-2 text-sm sm:text-lg px-5 sm:px-8 py-2.5 sm:py-3">
                 <span>Our Services</span>
                 <ArrowRight size={20} />
               </Link>
-              <Link to="/contact" className="bg-white text-gray-900 px-8 py-3 rounded-md font-semibold hover:bg-gray-100 transition-all text-lg">
+              <Link to="/contact" className="bg-white text-gray-900 px-5 sm:px-8 py-2.5 sm:py-3 rounded-md font-semibold hover:bg-gray-100 transition-all text-sm sm:text-lg">
                 Contact Us
               </Link>
             </div>
@@ -67,7 +67,7 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-12 sm:py-16 lg:py-20 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -77,10 +77,10 @@ const Home = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="text-center p-8 bg-white rounded-lg shadow-sm border-t-4 border-pragna-maroon"
+                className="text-center p-4 sm:p-6 lg:p-8 bg-white rounded-lg shadow-sm border-t-4 border-pragna-maroon"
               >
-                <div className="text-4xl font-bold text-gray-900 mb-2">{stat.value}</div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-1 sm:mb-2">{stat.value}</div>
+                <div className="text-xs sm:text-sm lg:text-base text-gray-600 font-medium">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -88,7 +88,7 @@ const Home = () => {
       </section>
 
       {/* Services Overview / Process */}
-      <section className="py-24 bg-white">
+      <section className="py-14 sm:py-20 lg:py-24 bg-white">
         <div className="container mx-auto px-4 text-center">
           <motion.span
             initial={{ opacity: 0 }}
@@ -107,13 +107,13 @@ const Home = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.2 }}
-                className="p-10 border border-gray-100 bg-gray-50/50 rounded-2xl hover:shadow-2xl transition-all duration-500 group relative overflow-hidden"
+                className="p-6 sm:p-8 lg:p-10 border border-gray-100 bg-gray-50/50 rounded-2xl hover:shadow-2xl transition-all duration-500 group relative overflow-hidden"
               >
-                <h3 className="text-5xl font-black text-gray-900 mb-8 relative z-10 group-hover:text-pragna-maroon group-hover:scale-110 transition-all duration-300 origin-left">
+                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-gray-900 mb-4 sm:mb-6 lg:mb-8 relative z-10 group-hover:text-pragna-maroon group-hover:scale-110 transition-all duration-300 origin-left">
                   {step.number}
                 </h3>
-                <h4 className="text-2xl font-bold mb-4 text-gray-900">{step.title}</h4>
-                <p className="text-gray-600 leading-relaxed text-lg">
+                <h4 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-gray-900">{step.title}</h4>
+                <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
                   {step.description}
                 </p>
               </motion.div>
@@ -123,7 +123,7 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 relative overflow-hidden">
+      <section className="py-14 sm:py-20 lg:py-24 relative overflow-hidden">
         {/* Modern Background with Gradients and Shapes */}
         <div className="absolute inset-0 bg-gray-900">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-pragna-maroon/20 blur-[120px] rounded-full -mr-64 -mt-64 animate-pulse"></div>
@@ -140,16 +140,16 @@ const Home = () => {
             <span className="inline-block px-4 py-1 bg-pragna-maroon/20 text-pragna-maroon border border-pragna-maroon/30 rounded-full text-sm font-bold tracking-widest uppercase mb-6">
               Get Started Today
             </span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-8 leading-tight max-w-4xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-6 sm:mb-8 leading-tight max-w-4xl mx-auto">
               Ready to elevate your <span className="text-pragna-maroon">industrial project?</span>
             </h2>
-            <p className="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-400 mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
               Work with a team that has 50 years of excellence. We bring precision, quality, and expertise to every fabrication challenge.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Link
                 to="/contact"
-                className="group relative px-10 py-4 bg-pragna-maroon text-white font-bold text-lg rounded-lg overflow-hidden transition-all hover:shadow-[0_0_30px_rgba(153,27,27,0.4)]"
+                className="group relative px-6 sm:px-10 py-3 sm:py-4 bg-pragna-maroon text-white font-bold text-base sm:text-lg rounded-lg overflow-hidden transition-all hover:shadow-[0_0_30px_rgba(153,27,27,0.4)]"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   Get a Quote Now <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
@@ -158,7 +158,7 @@ const Home = () => {
               </Link>
               <Link
                 to="/services"
-                className="px-10 py-4 bg-white/5 hover:bg-white/10 text-white font-bold text-lg rounded-lg border border-white/10 hover:border-white/20 transition-all backdrop-blur-sm"
+                className="px-6 sm:px-10 py-3 sm:py-4 bg-white/5 hover:bg-white/10 text-white font-bold text-base sm:text-lg rounded-lg border border-white/10 hover:border-white/20 transition-all backdrop-blur-sm"
               >
                 Explore Services
               </Link>

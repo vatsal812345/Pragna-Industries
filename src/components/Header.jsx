@@ -27,11 +27,11 @@ const Header = () => {
     <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-md py-2' : 'bg-transparent py-4'}`}>
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2">
-          <img src="/IMG_logo.png" alt="Pragna Industries Logo" className="h-10 md:h-12 object-contain" />
-          <div className="flex flex-col justify-center">
-            <span className={`font-bold text-2xl md:text-3xl leading-none tracking-tight ${isScrolled ? 'text-gray-900' : 'text-gray-900'}`}>PRAGNA</span>
-            <span className={`text-[0.65rem] md:text-[0.85rem] tracking-[0.34em] font-bold text-pragna-maroon mt-1 ml-[2px] md:ml-[3px]`}>INDUSTRIES</span>
+        <Link to="/" className="flex items-center gap-3">
+          <img src="/IMG_logo.png" alt="Pragna Industries Logo" className="h-9 sm:h-11 md:h-12 object-contain" />
+          <div className="flex flex-col justify-center leading-tight">
+            <span className={`font-bold text-xl sm:text-2xl md:text-3xl leading-none tracking-tight ${isScrolled ? 'text-gray-900' : 'text-gray-900'}`}>PRAGNA</span>
+            <span className={`text-[0.55rem] sm:text-[0.65rem] md:text-[0.85rem] tracking-[0.3em] sm:tracking-[0.34em] font-bold text-pragna-maroon mt-0.5`}>INDUSTRIES</span>
           </div>
         </Link>
 
@@ -55,10 +55,10 @@ const Header = () => {
             <Phone size={16} className="text-pragna-maroon" />
             <span>Call Us</span>
           </a>
-          <button className="btn-primary flex items-center space-x-1 py-1.5 px-4 rounded shadow-lg">
+          <Link to="/contact" className="btn-primary flex items-center space-x-1 py-1.5 px-4 rounded shadow-lg">
             <CheckCircle size={16} />
             <span>Get Job Done</span>
-          </button>
+          </Link>
         </div>
 
         {/* Mobile menu button */}
@@ -89,7 +89,13 @@ const Header = () => {
                 <Phone size={20} className="text-pragna-maroon" />
                 <span>Call Us: 9824659668</span>
               </a>
-              <button className="btn-primary w-full py-3">Get Job Done</button>
+              <Link 
+                to="/contact" 
+                className="btn-primary w-full py-3 flex items-center justify-center"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Get Job Done
+              </Link>
             </div>
           </nav>
         </div>

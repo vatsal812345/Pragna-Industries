@@ -4,16 +4,16 @@ import { Phone, Mail, MapPin, Facebook, Linkedin, Twitter } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0b0f19] text-white pt-24 pb-8 border-t border-white/5">
+    <footer className="bg-[#0b0f19] text-white pt-14 sm:pt-20 lg:pt-24 pb-6 sm:pb-8 border-t border-white/5">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10 lg:gap-12 mb-12 sm:mb-16 lg:mb-20">
           {/* Company Info */}
-          <div className="space-y-8">
-            <Link to="/" className="flex items-center space-x-2 group">
-              <img src="/IMG_logo.png" alt="Pragna Industries Logo" className="h-12 md:h-14 object-contain group-hover:scale-105 transition-transform" />
-              <div className="flex flex-col justify-center">
-                <span className="font-bold text-2xl md:text-3xl tracking-tight leading-none text-white">PRAGNA</span>
-                <span className="text-[0.65rem] md:text-[0.85rem] font-bold tracking-[0.34em] text-red-500 uppercase mt-1 ml-[2px] md:ml-[3px]">INDUSTRIES</span>
+          <div className="space-y-6 sm:space-y-8">
+            <Link to="/" className="flex items-center gap-3 group">
+              <img src="/IMG_logo.png" alt="Pragna Industries Logo" className="h-10 sm:h-12 md:h-14 object-contain group-hover:scale-105 transition-transform" />
+              <div className="flex flex-col justify-center leading-tight">
+                <span className="font-bold text-xl sm:text-2xl md:text-3xl tracking-tight leading-none text-white">PRAGNA</span>
+                <span className="text-[0.55rem] sm:text-[0.65rem] md:text-[0.85rem] font-bold tracking-[0.3em] sm:tracking-[0.34em] text-red-500 uppercase mt-0.5">INDUSTRIES</span>
               </div>
             </Link>
             <p className="text-gray-400 leading-relaxed text-[15px]">
@@ -38,7 +38,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-bold mb-8 flex items-center gap-3">
+            <h3 className="text-base sm:text-lg font-bold mb-6 sm:mb-8 flex items-center gap-3">
               <span className="w-8 h-[2px] bg-pragna-maroon"></span>
               Quick Navigation
             </h3>
@@ -59,7 +59,7 @@ const Footer = () => {
 
           {/* Services */}
           <div>
-            <h3 className="text-lg font-bold mb-8 flex items-center gap-3">
+            <h3 className="text-base sm:text-lg font-bold mb-6 sm:mb-8 flex items-center gap-3">
               <span className="w-8 h-[2px] bg-pragna-maroon"></span>
               Our Expertise
             </h3>
@@ -68,7 +68,7 @@ const Footer = () => {
                 'Industrial Fabrication',
                 'Radiator Fabrication',
                 'Generator Towers',
-                'Tanker Fabrication',
+                'Boiler Fabrication',
                 'Custom Metal Works'
               ].map((service) => (
                 <li key={service} className="flex items-center gap-3">
@@ -81,7 +81,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-bold mb-8 flex items-center gap-3">
+            <h3 className="text-base sm:text-lg font-bold mb-6 sm:mb-8 flex items-center gap-3">
               <span className="w-8 h-[2px] bg-pragna-maroon"></span>
               Contact Info
             </h3>
@@ -110,7 +110,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/5 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
+        <div className="border-t border-white/5 pt-6 sm:pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-xs sm:text-sm">
           <p>© {new Date().getFullYear()} Pragna Industries. Precision in every detail.</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>

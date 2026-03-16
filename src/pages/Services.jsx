@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Settings, Zap, Target, Truck, Hammer, Cpu } from 'lucide-react';
 
@@ -31,44 +32,44 @@ const Services = () => {
       title: 'Industrial Fabrication',
       description: 'Comprehensive industrial fabrication services including structural components, machine parts, and custom industrial assemblies based on client blueprints.',
       icon: <Settings size={48} />,
-      image: 'https://images.unsplash.com/photo-1537462332002-41fe0f2621ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      image: '2.png'
     },
     {
       title: 'Radiator Fabrication',
       description: 'Specialized manufacturing of radiator fan guards and related components. We have produced over 25,000+ units with precision and durability.',
       icon: <Zap size={48} />,
-      image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      image: '10.png'
     },
     {
       title: 'Generator Towers',
       description: 'Designing and manufacturing robust generator towers for industrial and commercial power systems. 50+ towers manufactured to date.',
       icon: <Target size={48} />,
-      image: 'https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      image: '5.png'
     },
     {
-      title: 'Tanker Fabrication',
-      description: 'Custom fabrication of industrial tankers, including water tanks, fuel tankers, and chemical storage solutions built to handle extreme conditions.',
+      title: 'Boiler Fabrication',
+      description: 'Custom fabrication of industrial boilers, including water-tube, fire-tube, and high-pressure steam systems designed for maximum efficiency.',
       icon: <Truck size={48} />,
-      image: 'https://images.unsplash.com/photo-1501700493788-fa1a4fc9fe62?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      image: '18.jpg'
     },
     {
       title: 'Custom Metal Manufacturing',
       description: 'End-to-end custom metal manufacturing services. If you have a design, our expert team can build it using high-grade materials.',
       icon: <Hammer size={48} />,
-      image: 'https://images.unsplash.com/photo-1541888946425-d81bb19480c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      image: '8.png'
     },
     {
       title: 'Technical Consultation',
       description: 'Professional engineering consultation for fabrication projects, helping clients optimize their designs for better durability and cost-efficiency.',
       icon: <Cpu size={48} />,
-      image: 'https://images.unsplash.com/photo-1581092583537-20d51b4b4f1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      image: '16.png'
     }
   ];
 
   return (
-    <div className="bg-white pb-24">
+    <div className="bg-white pb-20">
       {/* Page Header */}
-      <section className="relative py-24 bg-gray-50 overflow-hidden mb-16 px-4">
+      <section className="relative py-16 sm:py-20 lg:py-24 bg-gray-50 overflow-hidden mb-10 sm:mb-16 px-4">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(153,27,27,0.05),transparent)]"></div>
         
         <div className="container mx-auto text-center relative z-10">
@@ -104,16 +105,16 @@ const Services = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-12"
         >
           {services.map((service, index) => (
             <motion.div 
               key={index}
               variants={itemVariants}
               whileHover={{ y: -10 }}
-              className="bg-white rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] border border-gray-100 group transition-all duration-500"
+              className="bg-white rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.05)] hover:shadow-[0_20px_60px_rgba(0,0,0,0.1)] border border-gray-100 group transition-all duration-500 flex flex-col h-full"
             >
-              <div className="h-64 overflow-hidden relative">
+              <div className="h-48 sm:h-64 overflow-hidden relative">
                 <img 
                   src={service.image} 
                   alt={service.title} 
@@ -127,14 +128,17 @@ const Services = () => {
                 </div>
               </div>
               
-              <div className="p-10">
-                <h3 className="text-2xl font-black mb-4 text-gray-900 group-hover:text-pragna-maroon transition-colors uppercase tracking-tight">
+              <div className="p-6 sm:p-8 lg:p-10 flex flex-col flex-grow">
+                <h3 className="text-xl sm:text-2xl font-black mb-3 sm:mb-4 text-gray-900 group-hover:text-pragna-maroon transition-colors uppercase tracking-tight">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed min-h-[80px] text-lg">
+                <p className="text-gray-600 leading-relaxed text-base sm:text-lg flex-grow">
                   {service.description}
                 </p>
-                <div className="mt-8 pt-8 border-t border-gray-50 flex items-center justify-between">
+                <Link 
+                  to="/contact"
+                  className="mt-8 pt-8 border-t border-gray-50 flex items-center justify-between shrink-0 hover:bg-gray-50/50 transition-colors"
+                >
                   <span className="text-pragna-maroon font-black text-sm tracking-widest uppercase">Consult Now</span>
                   <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-pragna-maroon group-hover:text-white transition-all duration-300">
                     <motion.div
@@ -144,7 +148,7 @@ const Services = () => {
                       →
                     </motion.div>
                   </div>
-                </div>
+                </Link>
               </div>
             </motion.div>
           ))}
@@ -152,8 +156,8 @@ const Services = () => {
       </div>
 
       {/* Slide Up / Text Reveal Section (Instructional requirement) */}
-      <section className="mt-32 bg-gray-900 py-24 text-white overflow-hidden">
-        <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <section className="mt-16 sm:mt-24 lg:mt-32 bg-gray-900 py-14 sm:py-20 lg:py-24 text-white overflow-hidden">
+        <div className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-10 sm:gap-12 lg:gap-16 items-center">
           <motion.div
              initial={{ opacity: 0, x: -100 }}
              whileInView={{ opacity: 1, x: 0 }}
@@ -166,17 +170,17 @@ const Services = () => {
                 whileInView={{ y: 0 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
                 viewport={{ once: true }}
-                className="text-4xl font-bold mb-8"
+                className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-6 sm:mb-8"
               >
                 Custom Design & Engineering
               </motion.h2>
             </div>
-            <p className="text-gray-400 text-lg mb-8">
+            <p className="text-gray-400 text-base sm:text-lg mb-6 sm:mb-8">
               We don't just manufacture; we bring your engineering visions to life. Share your blueprints, and our team will ensure every weld and cut is executed to perfection.
             </p>
             <ul className="space-y-4">
               {[
-                "Precision CNC Cutting",
+                "Precision Lathe Machining",
                 "Advanced ARC & MIG Welding",
                 "High-Grade Material Sourcing",
                 "Post-Fabrication Finishing"
@@ -202,9 +206,9 @@ const Services = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="absolute inset-0 border-2 border-pragna-maroon translate-x-4 translate-y-4 rounded-xl"></div>
+            <div className="absolute inset-0 border-2 border-pragna-white translate-x-4 translate-y-4 rounded-xl"></div>
             <img 
-              src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+              src="1.png" 
               alt="Engineering" 
               className="rounded-xl relative z-10" 
             />
