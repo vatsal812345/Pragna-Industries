@@ -28,9 +28,7 @@ const Header = () => {
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2">
-          <div className="w-10 h-10 bg-pragna-maroon flex items-center justify-center text-white font-bold text-xl rounded">
-            PI
-          </div>
+          <img src="/IMG_logo.png" alt="Pragna Industries Logo" className="h-12 md:h-14 object-contain" />
           <div className="flex flex-col">
             <span className={`font-bold text-xl leading-none ${isScrolled ? 'text-gray-900' : 'text-gray-900'}`}>PRAGNA</span>
             <span className={`text-xs tracking-widest text-pragna-maroon`}>INDUSTRIES</span>

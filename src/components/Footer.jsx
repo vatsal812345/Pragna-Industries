@@ -10,9 +10,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-8">
             <Link to="/" className="flex items-center space-x-3 group">
-              <div className="w-12 h-12 bg-pragna-maroon flex items-center justify-center text-white font-bold text-xl rounded-xl shadow-lg shadow-pragna-maroon/20 group-hover:scale-105 transition-transform">
-                PI
-              </div>
+              <img src="/IMG_logo.png" alt="Pragna Industries Logo" className="h-14 md:h-16 object-contain bg-white p-2 rounded-xl group-hover:scale-105 transition-transform" />
               <div className="flex flex-col">
                 <span className="font-bold text-xl tracking-tight leading-none text-white">PRAGNA</span>
                 <span className="text-[11px] font-black tracking-[0.2em] text-red-500 uppercase mt-1">Industries</span>
