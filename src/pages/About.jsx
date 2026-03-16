@@ -73,7 +73,7 @@ const About = () => {
             </div>
             <div className="lg:w-1/2 grid grid-cols-2 gap-6">
               <div className="space-y-6">
-                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Industrial Fabrication" className="rounded-2xl shadow-xl w-full h-80 object-cover" />
+                <img src="/1.jpg" alt="Industrial Fabrication" className="rounded-2xl shadow-xl w-full h-80 object-cover" />
                 <div className="bg-pragna-maroon p-8 rounded-2xl text-white shadow-xl">
                   <h4 className="text-3xl font-black mb-2">50+</h4>
                   <p className="opacity-80 font-medium">Years of Experience</p>
@@ -84,7 +84,7 @@ const About = () => {
                   <h4 className="text-3xl font-black text-gray-900 mb-2">25k+</h4>
                   <p className="text-gray-600 font-medium">Products Delivered</p>
                 </div>
-                <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Metal Work" className="rounded-2xl shadow-xl w-full h-80 object-cover" />
+                <img src="/2.jpg" alt="Metal Work" className="rounded-2xl shadow-xl w-full h-80 object-cover" />
               </div>
             </div>
           </div>
