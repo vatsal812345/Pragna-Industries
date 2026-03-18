@@ -116,7 +116,8 @@ const Home = () => {
                 <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
                   {step.description}
                 </p>
-              </motion.div>
+              </
+              motion.div>
             ))}
           </div>
         </div>

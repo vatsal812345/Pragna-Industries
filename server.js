@@ -2,14 +2,24 @@ import express from 'express';
 import nodemailer from 'nodemailer';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 dotenv.config();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from the Vite build directory
+const distPath = path.resolve(__dirname, 'dist');
+console.log('Serving static files from:', distPath);
+app.use(express.static(distPath));
 
 // Set up Nodemailer transporter
 const transporter = nodemailer.createTransport({
@@ -366,6 +376,11 @@ app.post('/api/contact', async (req, res) => {
     console.error('Error sending email:', error);
     res.status(500).json({ error: 'Failed to send email. Please try again later.' });
   }
+});
+
+// Catch-all route to serve the frontend for any non-API requests (Express 5 compatibility)
+app.get(/^(?!\/api).+/, (req, res) => {
+  res.sendFile(path.join(process.cwd(), 'dist', 'index.html'));
 });
 
 app.listen(PORT, () => {
